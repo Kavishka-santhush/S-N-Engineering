@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .logo-text { fill: #ffd700; font-family: Arial, sans-serif; font-weight: bold; }
+        .eng-text { fill: #ffffff; font-family: Arial, sans-serif; font-weight: bold; }
+    </style>
+    <text x="10" y="35" class="logo-text" font-size="32">S&amp;N</text>
+    <text x="85" y="35" class="eng-text" font-size="15">ENGINEERING</text>
+</svg>
