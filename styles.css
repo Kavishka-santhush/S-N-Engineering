@@ -10,54 +10,77 @@ body {
     line-height: 1.6;
     color: #ffffff;
     background-color: #1a1a1a;
+    overflow-x: hidden;
     font-size: 18px; /* Increased base font size */
 }
 
 /* Navigation */
 nav {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
+.nav-left {
+    margin-right: 2rem;
 }
 
 .logo {
-    display: block;
+    color: #ffd700;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
-.logo img {
-    height: 40px;
-    width: auto;
-}
-
-.nav-links {
+.nav-right {
     display: flex;
     gap: 2rem;
 }
 
-.nav-links a {
+.nav-right a {
     color: white;
     text-decoration: none;
-    font-size: 1.1rem; /* Increased from 0.9rem */
-    text-transform: uppercase;
+    font-size: 1rem;
+    padding: 0.5rem;
+}
+
+/* Mobile Navigation */
+@media screen and (max-width: 768px) {
+    nav {
+        padding: 0.8rem 1rem;
+    }
+    
+    .logo {
+        font-size: 1rem;
+    }
+    
+    .nav-right {
+        gap: 1rem;
+    }
+    
+    .nav-right a {
+        font-size: 0.9rem;
+        padding: 0.4rem;
+    }
 }
 
 /* Hero Section */
 .hero {
     position: relative;
-    height: 80vh;
-    min-height: 600px;
+    height: 100vh;
+    width: 100%;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-background {
@@ -66,8 +89,10 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
+    background-image: url('gettyimages-1769425775-2048x2048.jpg');
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     z-index: 1;
 }
 
@@ -77,7 +102,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     z-index: 2;
 }
 
@@ -85,36 +110,83 @@ nav {
     position: relative;
     z-index: 3;
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
+    width: 90%;
     max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    color: white;
 }
 
 .hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+    font-size: clamp(2rem, 8vw, 4.5rem);
     color: #ffd700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+.hero-content h2 {
+    font-size: clamp(1.2rem, 4vw, 2.5rem);
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.3;
 }
 
 .hero-content p {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 3vw, 1.5rem);
     margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+/* Mobile Hero Adjustments */
+@media screen and (max-width: 768px) {
+    .hero {
+        height: 100vh;
+        min-height: auto;
+    }
+
+    .hero-background {
+        background-position: center 20%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero {
+        height: 90vh;
+    }
+
+    .hero-background {
+        background-position: center 30%;
+    }
+
+    .hero-content {
+        padding: 1rem 0.5rem;
+    }
+}
+
+/* Portrait Mode */
+@media screen and (orientation: portrait) {
+    .hero-background {
+        background-position: center center;
+    }
+}
+
+/* Landscape Mode */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+    .hero {
+        height: 120vh;
+    }
 }
 
 /* Buttons */
 .btn {
-    padding: 1rem 2.5rem; /* Increased padding */
+    display: inline-block;
+    padding: 0.8rem 2rem;
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    font-size: 1.2rem; /* Increased from 1rem */
+    font-size: 1rem;
     transition: all 0.3s ease;
+    text-align: center;
     margin: 0.5rem;
+    min-width: 200px;
 }
 
 .btn.primary {
@@ -122,61 +194,63 @@ nav {
     color: #000;
 }
 
-.btn.secondary {
-    background-color: transparent;
-    border: 2px solid white;
-    color: white;
-}
-
 /* Welcome Section */
 .welcome {
-    padding: 5rem 2rem;
-    max-width: 1200px; /* Increased from 1000px */
+    padding: 2rem 1rem;
+    max-width: 90%;
     margin: 0 auto;
     text-align: center;
-    font-size: 1.3rem; /* Increased from 1.1rem */
+    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+    line-height: 1.6;
 }
 
 /* Services Section */
 .services {
-    padding: 5rem 2rem;
+    padding: 3rem 1rem;
+    text-align: center;
 }
 
 .services h2 {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: 2.5rem; /* Added specific size */
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    margin-bottom: 2rem;
+    color: #ffd700;
 }
 
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    padding: 2rem;
-}
-
-.service-item {
-    text-align: center;
-    background: #1a1a1a;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 1rem;
-    border-radius: 8px;
 }
 
-.service-item img {
+.service-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.service-card img {
     width: 100%;
-    height: 200px; /* Reduced height */
+    max-width: 300px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: 8px;
     margin-bottom: 1rem;
 }
 
-.service-item h3 {
-    font-size: 1.8rem;
+.service-card h3 {
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
     margin: 1rem 0;
+    color: #ffd700;
 }
 
-.service-item p {
-    font-size: 1.1rem;
+.service-card p {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     line-height: 1.6;
 }
 
@@ -587,8 +661,94 @@ footer {
 
 /* Additional Services Section */
 .additional-services {
-    padding: 4rem 0;
+    padding: 4rem 2rem;
     background-color: #1a1a1a;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-item {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-5px);
+}
+
+.service-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.service-item h3 {
+    color: #ffd700;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    margin: 1rem 0;
+}
+
+.service-item p {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .additional-services {
+        padding: 2rem 1rem;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .service-item {
+        padding: 1rem;
+        margin: 0 auto;
+        max-width: 400px;
+    }
+
+    .service-item img {
+        height: 180px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .additional-services {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .service-item {
+        padding: 0.8rem;
+    }
+
+    .service-item img {
+        height: 160px;
+    }
+
+    .service-item h3 {
+        font-size: 1.2rem;
+        margin: 0.8rem 0;
+    }
+
+    .service-item p {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+    }
 }
 
 /* CTA Section */
@@ -618,14 +778,16 @@ footer {
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     body {
         font-size: 16px; /* Slightly smaller base font size for mobile */
     }
 
     .hero {
-        height: 60vh;
-        min-height: 400px;
+        height: 100vh;
+        min-height: auto;
+        display: flex;
+        align-items: center;
     }
 
     .hero-content h1 {
@@ -718,5 +880,137 @@ footer {
     
     .hero img {
         max-height: 600px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Navigation */
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    .logo {
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        padding: 0.5rem;
+        text-align: center;
+    }
+
+    .hero {
+        height: 100vh;
+        min-height: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .btn {
+        margin: 0.5rem auto;
+        display: block;
+        width: 80%;
+        max-width: 250px;
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .service-card {
+        margin: 1rem auto;
+        max-width: 90%;
+    }
+
+    .service-card img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-content {
+        padding: 0 0.5rem;
+    }
+
+    .welcome {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .services {
+        padding: 2rem 0.5rem;
+    }
+
+    .service-card {
+        padding: 0.5rem;
+    }
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    .logo {
+        margin-bottom: 0.5rem;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        padding: 0.5rem;
+        text-align: center;
+    }
+
+    .hero-content {
+        padding: 0 1rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-content {
+        padding: 0 0.5rem;
+    }
+
+    .welcome {
+        padding: 1.5rem 0.5rem;
+    }
+
+    .services {
+        padding: 2rem 0.5rem;
+    }
+
+    .service-card {
+        padding: 0.5rem;
     }
 }
